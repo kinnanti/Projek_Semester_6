@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 100px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .card-header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .btn-primary {
+            width: 100%;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0069d9;
+        }
+
+        .register-link {
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .register-link a {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            color: #0069d9;
+            text-decoration: underline;
+        }
+
+        .header {
+            background-color: #DB7093;
+            padding: 35px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 40px; /* Ukuran font yang sama dengan halaman index */
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>REKOMENDASI BUKU</h1>
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0">Login Form</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" role="form" th:action="@{/login}" class="form-horizontal">
+                <div class="form-group">
+                    <label for="username">Email</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Enter email address" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter password" required/>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+                <div class="register-link">
+                    Not registered? <a th:href="@{/register}">Register/Signup here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <style>
+    /* Your existing CSS styles */
+
+    .header {
+      background-color: #DB7093;
+      padding: 40px;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 40px;
+    }
+
+    .sidebar {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .content {
+      margin-left: 270px;
+      padding: 20px;
+    }
+
+    .sidebar-item {
+      margin-bottom: 10px;
+    }
+
+    .sidebar-item a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .sidebar-item a:hover {
+      color: #DB7093;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+    <h1>REKOMENDASI BUKU</h1>
+</div>
+<div class="sidebar">
+    <div class="sidebar-item">
+        <a href="#">Dashboard</a>
+    </div>
+    <div class="sidebar-item">
+        <a href="#" th:href="@{/book}">Book Recommendation Pages</a>
+    </div>
+    <div class="sidebar-item">
+        <a href="#" th:href="@{/users}">User Pages</a>
+    </div>
+    <div class="sidebar-item">
+        <a class="logout-link" href="/index">Logout</a>
+    </div>
+
+</div>
+<div class="content">
+    <div align="center">
+        <h1>Edit Book</h1>
+        <br />
+        <form action="#" th:action="@{/updatebook}" th:object="${book}" method="post">
+
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>ID:</td>
+                    <td><input type="text" th:field="*{bookID}" readonly="readonly" /></td>
+                </tr>
+                <tr>
+                    <td>Judul:</td>
+                    <td><input type="text" th:field="*{title}" /></td>
+                </tr>
+                <tr>
+                    <td>Penulis:</td>
+                    <td><input type="text" th:field="*{authors}" /></td>
+                </tr>
+                <tr>
+                    <td>Rating Rata-rata:</td>
+                    <td><input type="text" th:field="*{averageRating}" /></td>
+                </tr>
+                <tr>
+                    <td>ISBN:</td>
+                    <td><input type="text" th:field="*{isbn}" /></td>
+                </tr>
+                <tr>
+                    <td>ISBN13:</td>
+                    <td><input type="text" th:field="*{isbn13}" /></td>
+                </tr>
+                <tr>
+                    <td>Kode Bahasa:</td>
+                    <td><input type="text" th:field="*{languageCode}" /></td>
+                </tr>
+                <tr>
+                    <td>Jumlah Halaman:</td>
+                    <td><input type="text" th:field="*{numPages}" /></td>
+                </tr>
+                <tr>
+                    <td>Jumlah Rating:</td>
+                    <td><input type="text" th:field="*{ratingsCount}" /></td>
+                </tr>
+                <tr>
+                    <td>Jumlah Ulasan Teks:</td>
+                    <td><input type="text" th:field="*{textReviewsCount}" /></td>
+                </tr>
+                <tr>
+                    <td>Tanggal Publikasi:</td>
+                    <td><input type="text" th:field="*{publicationDate}" /></td>
+                </tr>
+                <tr>
+                    <td>Penerbit:</td>
+                    <td><input type="text" th:field="*{publisher}" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Update</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

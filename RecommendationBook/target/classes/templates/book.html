@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+  <style>
+    .header {
+      background-color: #DB7093;
+      padding: 40px;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 40px;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logout-link {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .table-purple td {
+      background-color: #9C8AA5;
+      color: #fff;
+    }
+
+    .table-container {
+      max-height: 400px;
+      overflow-y: auto;
+      overflow-x: auto;
+    }
+
+    .table-header {
+      position: sticky;
+      top: 0;
+      background-color: #333;
+      color: #fff;
+      z-index: 1;
+    }
+
+    .table tbody tr td,
+    .table thead tr th {
+      text-align: center;
+    }
+
+    .sidebar {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .content {
+      margin-left: 270px;
+      padding: 20px;
+    }
+
+    .sidebar-item {
+      margin-bottom: 10px;
+    }
+
+    .sidebar-item a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .sidebar-item a:hover {
+      color: #DB7093;
+    }
+
+    .table-fixed-header thead {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1>REKOMENDASI BUKU</h1>
+</div>
+<div class="sidebar">
+  <div class="sidebar-item">
+    <a href="#">Dashboard</a>
+  </div>
+  <div class="sidebar-item">
+    <a href="#" th:href="@{/book}">Book Recommendation Pages</a>
+  </div>
+  <div class="sidebar-item">
+    <a href="/booksnew" class="logout-link">Enter New Book</a>
+  </div>
+  <div class="sidebar-item">
+    <a href="#" th:href="@{/users}">User Pages</a>
+  </div>
+  <div class="sidebar-item">
+    <a class="logout-link" href="/index">Logout</a>
+  </div>
+
+  <!-- Add more sidebar items as needed -->
+</div>
+<div class="content">
+  <div class="container">
+    <div class="row col-md-10">
+      <h2>List of Books</h2>
+    </div>
+    <!-- Wrap the table with a div to enable scrolling -->
+    <div class="table-container">
+      <table class="table table-bordered table-hover table-fixed-header">
+        <thead class="table-dark">
+        <tr>
+          <th>bookID</th>
+          <th>title</th>
+          <th>authors</th>
+          <th>average_rating</th>
+          <th>isbn</th>
+          <th>isbn13</th>
+          <th>language_code</th>
+          <th>num_pages</th>
+          <th>ratings_count</th>
+          <th>text_reviews_count</th>
+          <th>publication_date</th>
+          <th>publisher</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the list of books and populate the table rows -->
+        <tr th:each="book : ${listBook}">
+          <td th:text="${book.bookID}" class="table-purple">bookID</td>
+          <td th:text="${book.title}" class="table-purple">title</td>
+          <td th:text="${book.authors}" class="table-purple">authors</td>
+          <td th:text="${book.averageRating}" class="table-purple">average_rating</td>
+          <td th:text="${book.isbn}" class="table-purple">isbn</td>
+          <td th:text="${book.isbn13}" class="table-purple">isbn13</td>
+          <td th:text="${book.languageCode}" class="table-purple">language_code</td>
+          <td th:text="${book.numPages}" class="table-purple">num_pages</td>
+          <td th:text="${book.ratingsCount}" class="table-purple">ratings_count</td>
+          <td th:text="${book.textReviewsCount}" class="table-purple">text_reviews_count</td>
+          <td th:text="${book.publicationDate}" class="table-purple">publication_date</td>
+          <td th:text="${book.publisher}" class="table-purple">publisher</td>
+          <td>
+            <a th:href="@{/editbook/__${book.bookID}__}">Edit</a>
+            <a th:href="@{/deletebook/__${book.bookID}__}">Delete</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
